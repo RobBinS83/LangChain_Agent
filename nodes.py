@@ -14,7 +14,7 @@ def run_agent_reasoning(state: MessagesState) -> MessagesState:
     """
     Run the agent reasoning loop until a final answer is produced.
     """
-    response = llm.invoke([{"role": "system", "content": SYSTEM_MESSAGE}, *state.messages])
-    return {"message": [response]}
+    response = llm.invoke([{"role": "system", "content": SYSTEM_MESSAGE}, *state["messages"]])
+    return {"messages": [response]}
 
 tool_node = ToolNode(tools)
